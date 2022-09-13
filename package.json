@@ -9,12 +9,16 @@
     "lint": "next lint",
     "watch": "next lint && next dev",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "server": "json-server -p 3006 --watch db.json"
   },
   "dependencies": {
+    "axios": "^0.27.2",
+    "json-server": "^0.17.0",
     "next": "12.3.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "@babel/core": "^7.19.0",
