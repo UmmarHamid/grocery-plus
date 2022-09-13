@@ -1,9 +1,17 @@
 import { GetStaticProps } from "next";
 import api from "../../api/categories";
+import { useRouter } from "next/router";
 const Categories = ({ data }: any) => {
+  const router = useRouter();
   return (
     <div>
-      <h1 className="text3xl py-8">Groceries Page</h1>
+      <span
+        className="relative text-xl hover:cursor-pointer top-4"
+        onClick={() => router.back()}
+      >
+        Back
+      </span>
+      <h1 className="text-center py-16 text-3xl">Categories Page</h1>
       {data.map((category: any) => {
         return (
           <h2 key={category.id} className="text-lg">
