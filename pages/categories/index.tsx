@@ -1,8 +1,20 @@
 import { GetStaticProps } from "next";
-import api from "../../api/categories";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { useSelector, useDispatch } from "react-redux";
+
+import api from "../../api/categories";
+import { setCategories } from "../../store/slices/categorySlice";
+
 const Categories = ({ data }: any) => {
   const router = useRouter();
+  const categories = useSelector((state: any) => state.category.categories);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setCategories(data));
+  }, []);
+
   return (
     <div>
       <span
@@ -12,7 +24,7 @@ const Categories = ({ data }: any) => {
         Back
       </span>
       <h1 className="text-center py-16 text-3xl">Categories Page</h1>
-      {data.map((category: any) => {
+      {categories.map((category: any) => {
         return (
           <h2 key={category.id} className="text-lg">
             {category.title}
@@ -31,5 +43,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       data: res.data,
     },
+    revalidate: 60,
   };
 };

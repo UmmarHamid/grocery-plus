@@ -1,6 +1,7 @@
 import { GetStaticProps } from "next";
-import api from "../../api/users";
 import { useRouter } from "next/router";
+
+import api from "../../api/users";
 
 const Users = ({ data }: any) => {
   const router = useRouter();
